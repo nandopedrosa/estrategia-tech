@@ -2402,9 +2402,7 @@ select.form-control[multiple] {
   height: auto;
 }
 
-textarea.form-control {
-  height: auto;
-}
+textarea.form-control {}
 
 .form-group {
   margin-bottom: 1rem;

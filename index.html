@@ -100,7 +100,22 @@
                 <p class="text-justify">Inteiros são um dos tipos que podem ser usados para representar números em
                     Python. Estes podem ser valores positivos e
                     negativos e podem ser arbitrariamente grandes. Seguem-se alguns exemplos destes:</p>
-                <div id="pomba" data-pym-src="https://www.jdoodle.com/embed/v0/6dYG?stdin=0&arg=0&rw=1"></div>
+                <!-- <div id="pomba" data-pym-src="https://www.jdoodle.com/embed/v0/6dYG?stdin=0&arg=0&rw=1"></div> -->
+                <form>
+                    <div class="form-group">
+                        <label for="testeApi">Código</label>
+                        <textarea class="form-control" id="testeApi" rows="8"
+                            style="height:120px !important; background-color: lightgray">
+                            x=10
+                            y=25
+                            z=x+y
+                            
+                            print ("sum of x+y =", z)
+                        </textarea>
+                    </div>
+                    <button id="btn-testeApi" type="button" class="btn btn-primary">Executar</button>
+                </form>
+
                 <h2 class="mt-5 mb-4">Floats</h2>
                 <p class="text-justify">Floats são outra forma de representar números em Python e existem como valores
                     decimais positivos ou negativos. Abaixo
@@ -328,7 +343,28 @@
             $("#ex2").toggle();
             $("#ex2-solucao").toggle();
         });
+
+        $('#btn-testeApi').click(function () {
+            $.ajax({
+                type: "POST",
+                url: "https://stage.jdoodle.com/execute",
+                data: {
+                    "clientId": "9ed6ec99cc7fe79fbfee1e34bf54cf",
+                    "clientSecret": "bea38458979b715415f454fa6d9629733641397ef66c220e04d03d66eff9055f",
+                    "script": "public class MyClass {\r\n    public static void main(String args[]) {\r\n      int x=10;\r\n      int y=25;\r\n      int z=x+y;\r\n\r\n      System.out.println(\"Sum of x+y = \" + z);\r\n    }\r\n}",
+                    "language": "java",
+                    "versionIndex": "3"
+                },
+                success: function (data) {
+                    console.log(data);
+                },
+                contentType: 'application/json',
+                dataType: "json"
+            })
+        });
     </script>
+
+
 </body>
 
 </html>
